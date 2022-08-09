@@ -21,4 +21,4 @@ Voici une de ces magnifiques compilations labyrinthiques de choses que l'on conn
 
 * D&D: Base de donnée et OOP pour le champ de bataille d'un jeu mystique-philosophique.
 
--
+* Les règles du monde: Le code fonctionne en appliquant des régles. Quelles sont les règles de ce monde ? Comment les illustrer pour mettre en place un système qui les exécute ?
