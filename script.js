@@ -1,16 +1,22 @@
 /* Scripts */
+const textArea = document.getElementById("philosophe");
+textArea.value = null;
 
-function reponse () {
-        const textArea = document.getElementById("philosophe");
+function sleep (time){
+        return new Promise(r => setTimeout (r, time));
+}
+
+async function reponse () {
         const quiSuisJe = "Qui suis-je? ";
-        let repetition = ""
+        let recomposeMessage = "";
 
-        for (let i = 0; i < quiSuisJe.length; i++) {
-                repetition += quiSuisJe;
+        const decomposeMessage = quiSuisJe.split('');
+        console.log(decomposeMessage);
+
+        for (let i = 0; i < decomposeMessage.length; i++) {
+                recomposeMessage += decomposeMessage[i];
+                await sleep(100);
+                textArea.value = recomposeMessage;
         }
-        textArea.value = repetition;
-        console.log(repetition);
-        return repetition;
-
 }
 
