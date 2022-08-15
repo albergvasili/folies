@@ -1,9 +1,5 @@
 /* STYLESHEET */
 
-body:hover {
-        cursor: pointer;
-}
-
 body {
         height: 800px;
         margin: 0;
@@ -25,11 +21,22 @@ header,
         margin: 0;
         width: 100vw;
         height: 800px;
-        background-image: url('./images/ecole3.jpg');
-        background-size: cover;
         position: absolute;
         z-index: 1;
 }
+
+
+.original-image {
+        cursor: zoom-in;
+        background-image: url('./images/ecole3.jpg');
+        background-size: cover;
+}
+
+.zoom {
+        cursor: pointer;
+        background-image: url('./images/ecole2.jpg');
+        background-size: cover;
+
 
 div {
         display: grid;

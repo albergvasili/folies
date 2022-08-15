@@ -2,6 +2,7 @@
 const textArea = document.getElementById("philosophe");
 textArea.value = null;
 
+
 function sleep (time){
         return new Promise(r => setTimeout (r, time));
 }
@@ -19,4 +20,13 @@ async function reponse () {
                 textArea.value = recomposeMessage;
         }
 }
+
+const socrate = document.getElementById("socrate");
+socrate.addEventListener("click", zoomImage);
+
+function zoomImage() {
+        socrate.classList.remove("original-image");
+        socrate.classList.add("zoom");
+}
+        
 
