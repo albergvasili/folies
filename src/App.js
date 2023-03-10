@@ -11,27 +11,22 @@ function App() {
     ils ont tous quelque chose à vendre.   
     Leurs liens nous amènent quelque part, 
     et le risque de s'égarer est infime.   
-
        `;
   const secondParagraphe = `
-    Le Cybernaute se demande:
-    qu'aurais-je à contribuer dans cet amas de sites simples et utiles?
-
-    Je ne suis pas l'ennemi de l'utile,
-    et surtout pas l'ennemi du simple.
-
-    Mais que pourrais-je faire dans cet océan pragmatique de courants électriques,
-    numériques et virtuels?
-
-    Que pourrais-je faire de *bon*,
-    si le reste des créations cybernautiques,
-    le reste des websites sont déjà,
-    pour la plupart,
-    utiles,
-    simples,
-    et complets?
-
-    Pas besoin d'ajouter de l'eau à l'océan plein d'hydroxyde d'hydrogène.
+    Le Cybernaute se demande: 
+    qu'aurais-je à contribuer dans cet amas de sites simples et utiles?   
+    Je ne suis pas l'ennemi de l'utile, 
+    et surtout pas l'ennemi du simple.   
+    Mais que pourrais-je faire dans cet océan pragmatique de courants électriques, 
+    numériques et virtuels?   
+    Que pourrais-je faire de *bon*, 
+    si le reste des créations cybernautiques, 
+    le reste des websites sont déjà, 
+    pour la plupart, 
+    utiles, 
+    simples, 
+    et complets?   
+    Pas besoin d'ajouter de l'eau à l'océan plein d'hydroxyde d'hydrogène.   
         `;
   const thirdParagraphe = `
         Il n'y a là rien de spécial. Mais je ne cherche pas à être spécial, congosà! Je veux tout
@@ -64,20 +59,22 @@ function App() {
   };
 
   const [first, setFirst] = useState("");
+  const [second, setSecond] = useState("");
 
-  async function typing(textString) {
+  async function typing(textString, changeStateFunction) {
     let recomposeMessage = "";
     const decomposeMessage = textString.split('');
 
     for (let i = 0; i < decomposeMessage.length; i++) {
       recomposeMessage += decomposeMessage[i];
       await sleep(100);
-      setFirst(recomposeMessage);
+      changeStateFunction(recomposeMessage);
     };
   }
 
   useEffect(() => {
-    typing(firstParagraphe)
+    typing(firstParagraphe, setFirst)
+    typing(secondParagraphe, setSecond)
   }, []);
 
   return (
@@ -86,7 +83,7 @@ function App() {
         {first}
       </p>
       <p className="paragraph">
-        {secondParagraphe}
+        {second}
       </p>
       <p className="paragraph">
         {thirdParagraphe}
