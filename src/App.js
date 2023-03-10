@@ -1,20 +1,37 @@
 import './App.css';
+import {useState, useEffect} from 'react';
 
 function App() {
   const firstParagraphe = `
-        Un site web. Pour quoi faire? Le monde virtuel du Cybernaute est plein de sites utiles
-        et complets. Ils ont tous quelque chose à dire, ces cybernautes avec leurs sites utiles,
-        ils ont quelque chose à vendre. Leurs liens nous amènent tous quelque part, et le risque
-        de s'égarer est infime.
+    Un site web.    
+    Pour quoi faire?   
+    Le monde virtuel des cybernautes est plein de sites utiles et complets.   
+    Ils ont tous quelque chose à dire, 
+    ces cybernautes avec leurs sites web utiles, 
+    ils ont tous quelque chose à vendre.   
+    Leurs liens nous amènent quelque part, 
+    et le risque de s'égarer est infime.   
+
        `;
   const secondParagraphe = `
-        Le Cybernaute se demande: qu'aurais-je à contribuer dans cet amas de sites simples et utiles?
-        Je ne suis pas l'ennemi de l'utile, et surtout pas l'ennemi du simple. Mais que pourrais-je
-        faire dans cet océan pragmatique de courants électriques, numériques et virtuels? Que
-        pourrais-je faire de *bon*
-        , si le reste des créations cybernautiques, le reste des websites
-        sont déjà, pour la plupart, utiles, simples, et complets? Pas besoin d'ajouter de l'eau à
-        l'océan plein d'hydroxyde d'hydrogène.
+    Le Cybernaute se demande:
+    qu'aurais-je à contribuer dans cet amas de sites simples et utiles?
+
+    Je ne suis pas l'ennemi de l'utile,
+    et surtout pas l'ennemi du simple.
+
+    Mais que pourrais-je faire dans cet océan pragmatique de courants électriques,
+    numériques et virtuels?
+
+    Que pourrais-je faire de *bon*,
+    si le reste des créations cybernautiques,
+    le reste des websites sont déjà,
+    pour la plupart,
+    utiles,
+    simples,
+    et complets?
+
+    Pas besoin d'ajouter de l'eau à l'océan plein d'hydroxyde d'hydrogène.
         `;
   const thirdParagraphe = `
         Il n'y a là rien de spécial. Mais je ne cherche pas à être spécial, congosà! Je veux tout
@@ -42,24 +59,45 @@ function App() {
         Le séjour en cet espace cybérien surréaliste est inutile, incomplet, et bizarre.
         Bienvenue au labyrinthe des folies du Cybernaute!
         `;
+  function sleep(time){
+    return new Promise(r => setTimeout (r, time));
+  };
+
+  const [first, setFirst] = useState("");
+
+  async function typing(textString) {
+    let recomposeMessage = "";
+    const decomposeMessage = textString.split('');
+
+    for (let i = 0; i < decomposeMessage.length; i++) {
+      recomposeMessage += decomposeMessage[i];
+      await sleep(100);
+      setFirst(recomposeMessage);
+    };
+  }
+
+  useEffect(() => {
+    typing(firstParagraphe)
+  }, []);
+
   return (
     <div className="App">
-      <p classname="paragraph">
-        {firstParagraphe}
+      <p className="paragraph">
+        {first}
       </p>
-      <p classname="paragraph">
+      <p className="paragraph">
         {secondParagraphe}
       </p>
-      <p classname="paragraph">
+      <p className="paragraph">
         {thirdParagraphe}
       </p>
-      <p classname="paragraph">
+      <p className="paragraph">
         {fourthParagraphe}
       </p>
-      <p classname="paragraph">
+      <p className="paragraph">
         {fifthParagraphe}
       </p>
-      <p classname="paragraph">
+      <p className="paragraph">
         {sixthParagraphe}
       </p>
     
