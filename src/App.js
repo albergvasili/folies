@@ -1,7 +1,7 @@
 import './App.css';
 import {useState, useEffect} from 'react';
 
-function App() {
+function Bienvenue() {
   const firstParagraphe = `
     Un site web.    
     Pour quoi faire?   
@@ -86,36 +86,51 @@ function App() {
     et bizarre.   
     Bienvenue au labyrinthe des folies du Cybernaute!
         `;
-  function sleep(time){
-    return new Promise(r => setTimeout (r, time));
-  };
 
-  const [first, setFirst] = useState("");
-  const [second, setSecond] = useState("");
+  const [switchParagraph, setSwitch] = useState(null);
+  const [firstParagraph, setFirst] = useState("");
+  const [secondParagraph, setSecond] = useState("");
 
-  async function typing(textString, changeStateFunction) {
+  async function typing(textString, paragraphNumber, changeStateFunction) {
+    function sleep(time){
+      return new Promise(r => setTimeout (r, time));
+    };
+
+    let i;
     let recomposeMessage = "";
-    const decomposeMessage = textString.split('');
+    const decomposeMessage = textString.split("");
 
-    for (let i = 0; i < decomposeMessage.length; i++) {
+    for (i = 0; i < decomposeMessage.length; i++) {
       recomposeMessage += decomposeMessage[i];
-      await sleep(100);
+      await sleep(50);
       changeStateFunction(recomposeMessage);
     };
-  }
+
+    if (i === textString.length) {
+      setSwitch(paragraphNumber + 1);
+    };
+  };
 
   useEffect(() => {
-    typing(firstParagraphe, setFirst)
-    typing(secondParagraphe, setSecond)
-  }, []);
+    typing(firstParagraphe, 1, setFirst);
+  }, [firstParagraphe]);
+
+  const handleSecond = (event) => {
+    event.preventDefault();
+    typing(secondParagraphe, 2, setSecond);
+    setSwitch(null);
+  };
 
   return (
     <div className="App">
       <p className="paragraph">
-        {first}
+        {firstParagraph}
       </p>
+      {switchParagraph === 2
+      ? <Continuer handleClick={handleSecond}/>
+     : null}
       <p className="paragraph">
-        {second}
+        {secondParagraph}
       </p>
       <p className="paragraph">
         {thirdParagraphe}
@@ -133,5 +148,19 @@ function App() {
     </div>
   );
 }
+
+function Continuer({handleClick}) {
+  return (
+    <button onClick={handleClick}>Continuer</button>
+  );
+};
+
+function App() {
+  return (
+    <div className="App">
+      <Bienvenue />
+    </div>
+  );
+};
 
 export default App;
