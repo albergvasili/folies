@@ -90,6 +90,10 @@ function Bienvenue() {
   const [switchParagraph, setSwitch] = useState(null);
   const [firstParagraph, setFirst] = useState("");
   const [secondParagraph, setSecond] = useState("");
+  const [thirdParagraph, setThird] = useState("");
+  const [fourthParagraph, setFourth] = useState("");
+  const [fifthParagraph, setFifth] = useState("");
+  const [sixthParagraph, setSixth] = useState("");
 
   async function typing(textString, paragraphNumber, changeStateFunction) {
     function sleep(time){
@@ -121,6 +125,27 @@ function Bienvenue() {
     setSwitch(null);
   };
 
+  const handleThird = (event) => {
+    event.preventDefault();
+    typing(thirdParagraphe, 3, setThird);
+    setSwitch(null);
+  };
+
+  const handleFourth = (event) => {
+    event.preventDefault();
+    typing(fourthParagraphe, 4, setFourth);
+    setSwitch(null);
+  };
+  const handleFifth = (event) => {
+    event.preventDefault();
+    typing(fifthParagraphe, 5, setFifth);
+    setSwitch(null);
+  };
+  const handleSixth = (event) => {
+    event.preventDefault();
+    typing(sixthParagraphe, 6, setSixth);
+    setSwitch(null);
+  };
   return (
     <div className="App">
       <p className="paragraph">
@@ -131,20 +156,27 @@ function Bienvenue() {
      : null}
       <p className="paragraph">
         {secondParagraph}
-      </p>
+      </p>{switchParagraph === 3
+      ? <Continuer handleClick={handleThird}/>
+     : null}
       <p className="paragraph">
-        {thirdParagraphe}
-      </p>
+        {thirdParagraph}
+      </p>{switchParagraph === 4
+      ? <Continuer handleClick={handleFourth}/>
+     : null}
       <p className="paragraph">
-        {fourthParagraphe}
-      </p>
+        {fourthParagraph}
+      </p>{switchParagraph === 5
+      ? <Continuer handleClick={handleFifth}/>
+     : null}
       <p className="paragraph">
-        {fifthParagraphe}
-      </p>
+        {fifthParagraph}
+      </p>{switchParagraph === 6
+      ? <Continuer handleClick={handleSixth}/>
+     : null}
       <p className="paragraph">
-        {sixthParagraphe}
+        {sixthParagraph}
       </p>
-    
     </div>
   );
 }
