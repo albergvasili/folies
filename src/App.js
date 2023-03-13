@@ -84,7 +84,6 @@ function Bienvenue() {
     Le séjour en cet espace cybérien surréaliste est inutile, 
     incomplet, 
     et bizarre.   
-    Bienvenue au labyrinthe des folies du Cybernaute!
         `;
 
   const [switchParagraph, setSwitch] = useState(null);
@@ -152,31 +151,38 @@ function Bienvenue() {
         {firstParagraph}
       </p>
       {switchParagraph === 2
-      ? <Continuer handleClick={handleSecond}/>
-     : null}
+        ? <Continuer handleClick={handleSecond}/>
+        : null}
       <p className="paragraph">
         {secondParagraph}
-      </p>{switchParagraph === 3
-      ? <Continuer handleClick={handleThird}/>
-     : null}
+      </p>
+      {switchParagraph === 3
+        ? <Continuer handleClick={handleThird}/>
+        : null}
       <p className="paragraph">
         {thirdParagraph}
-      </p>{switchParagraph === 4
-      ? <Continuer handleClick={handleFourth}/>
-     : null}
+      </p>
+      {switchParagraph === 4
+        ? <Continuer handleClick={handleFourth}/>
+        : null}
       <p className="paragraph">
         {fourthParagraph}
-      </p>{switchParagraph === 5
-      ? <Continuer handleClick={handleFifth}/>
-     : null}
+      </p>
+      {switchParagraph === 5
+        ? <Continuer handleClick={handleFifth}/>
+        : null}
       <p className="paragraph">
         {fifthParagraph}
-      </p>{switchParagraph === 6
-      ? <Continuer handleClick={handleSixth}/>
-     : null}
+      </p>
+      {switchParagraph === 6
+        ? <Continuer handleClick={handleSixth}/>
+        : null}
       <p className="paragraph">
         {sixthParagraph}
       </p>
+      {switchParagraph === 7
+        ? <h3>Bienvenue au labyrinthe des folies du Cybernaute!</h3>
+        : null}
     </div>
   );
 }
