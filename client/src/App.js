@@ -3,15 +3,11 @@ import Main from './components/Main';
 import {useState} from 'react';
 
 function App() {
-  const [rendering, setRendering] = useState("main");
-
-  const enter = () => {
-    setRendering("intro");
-  };
+  const [rendering, setRendering] = useState('main');
 
   switch (rendering) {
     case 'main':
-      return (<Main onClick={enter} />);
+      return (<Main onClick={() => setRendering('intro')} />);
     case 'intro':
       return (<Bienvenue />);
     default:
