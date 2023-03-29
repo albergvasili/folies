@@ -32,75 +32,54 @@ function Bienvenue() {
     };
   };
 
-    useEffect(() => {
+  useEffect(() => {
     typing(firstParagraphe, 1);
   }, []);
 
-  const handleSecond = (event) => {
+  function handleClick(event, paragraph, paragraphNumber) {
     event.preventDefault();
-    typing(secondParagraphe, 2)
+    typing(paragraph, paragraphNumber);
     setSwitch(null);
-  };
-
-  const handleThird = (event) => {
-    event.preventDefault();
-    typing(thirdParagraphe, 3);
-    setSwitch(null);
-  };
-  const handleFourth = (event) => {
-    event.preventDefault();
-    typing(fourthParagraphe, 4);
-    setSwitch(null);
-  };
-  const handleFifth = (event) => {
-    event.preventDefault();
-    typing(fifthParagraphe, 5);
-    setSwitch(null);
-  };
-  const handleSixth = (event) => {
-    event.preventDefault();
-    typing(sixthParagraphe, 6);
-    setSwitch(null);
-  };
+  }
 
   return(
     <div> 
       <p className="paragraph">
         { paragraph[1] }
       </p>
-      {switchParagraph === 2
-        ? <Continuer handleClick={handleSecond }/>
-        : null}
+      { switchParagraph === 2
+        ? <Continuer handleClick={ (e) => handleClick(e, secondParagraphe, 2) }/>
+        : null }
       <p className="paragraph">
         { paragraph[2] } 
       </p>
-      {switchParagraph === 3
-        ? <Continuer handleClick={handleThird}/>
-        : null}
+      { switchParagraph === 3
+        ? <Continuer handleClick={ (e) => handleClick(e, thirdParagraphe, 3) }/>
+        : null }
       <p className="paragraph">
         { paragraph[3] }
       </p>
-      {switchParagraph === 4
-        ? <Continuer handleClick={handleFourth}/>
-        : null}
+      { switchParagraph === 4
+        ? <Continuer handleClick={ (e) => handleClick(e, fourthParagraphe, 4) }/>
+        : null }
       <p className="paragraph">
         { paragraph[4] }
       </p>
-      {switchParagraph === 5
-        ? <Continuer handleClick={handleFifth}/>
-        : null}
+      { switchParagraph === 5
+        ? <Continuer handleClick={ (e) => handleClick(e, fifthParagraphe, 5) }/>
+        : null }
       <p className="paragraph">
         { paragraph[5] }
       </p>
-      {switchParagraph === 6
-        ? <Continuer handleClick={handleSixth}/>
-        : null}
+      { switchParagraph === 6
+        ? <Continuer handleClick={ (e) => handleClick(e, sixthParagraphe, 6) }/>
+        : null }
       <p className="paragraph">
         { paragraph[6] }
       </p>
-      {switchParagraph === 7
+      { switchParagraph === 7
         ? <h3>Bienvenue au labyrinthe des folies du Cybernaute!</h3>
-        : null}
+        : null }
     </div>
   );
 };
