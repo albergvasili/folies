@@ -1,87 +1,48 @@
-import {useState, useEffect} from 'react';
-
-import {firstParagraphe,
+import { useState } from 'react';
+import { firstParagraphe,
   secondParagraphe,
   thirdParagraphe,
   fourthParagraphe,
   fifthParagraphe,
-  sixthParagraphe} from '../text/bienvenue.js';
-import Continuer from './Continuer.js';
+  sixthParagraphe } from '../text/bienvenue.js';
+import Paragraph from './Paragraph.js';
 
-function Bienvenue() {
-  const [switchParagraph, setSwitch] = useState(null);
-  const [paragraph, setParagraph] = useState({});
+function Bienvenue({ onClick }) {
+  const [next, setNext] = useState({ 0: true });
 
-  async function typing(textString, paragraphNumber) {
-    function sleep(time){
-      return new Promise(r => setTimeout (r, time));
-    };
-
-    let i;
-    let recomposeMessage = "";
-    const decomposeMessage = textString.split("");
-
-    for (i = 0; i < decomposeMessage.length; i++) {
-      recomposeMessage += decomposeMessage[i];
-      await sleep(50);
-      setParagraph({ ...paragraph, [paragraphNumber]: recomposeMessage });
-    };
-
-    if (i === textString.length) {
-      setSwitch(paragraphNumber + 1);
-    };
+  function handleClick(event, number) {
+    setNext({ ...next, [number]: true });
+    event.target.className = "hidden";
   };
 
-  useEffect(() => {
-    typing(firstParagraphe, 1);
-  }, []);
-
-  function handleClick(event, paragraph, paragraphNumber) {
-    event.preventDefault();
-    typing(paragraph, paragraphNumber);
-    setSwitch(null);
-  }
-
-  return(
-    <div> 
-      <p className="paragraph">
-        { paragraph[1] }
-      </p>
-      { switchParagraph === 2
-        ? <Continuer handleClick={ (e) => handleClick(e, secondParagraphe, 2) }/>
+  return (
+    <div>
+      <Paragraph paragraph={ firstParagraphe } handleClick={(event) => handleClick(event, 1)} />
+      { next[1]
+        ? <Paragraph paragraph={ secondParagraphe } handleClick={(event) => handleClick(event, 2)} />
         : null }
-      <p className="paragraph">
-        { paragraph[2] } 
-      </p>
-      { switchParagraph === 3
-        ? <Continuer handleClick={ (e) => handleClick(e, thirdParagraphe, 3) }/>
+      { next[2]
+        ? <Paragraph paragraph={ thirdParagraphe } handleClick={(event) => handleClick(event, 3)} />
         : null }
-      <p className="paragraph">
-        { paragraph[3] }
-      </p>
-      { switchParagraph === 4
-        ? <Continuer handleClick={ (e) => handleClick(e, fourthParagraphe, 4) }/>
+      { next[3]
+        ? <Paragraph paragraph={ fourthParagraphe } handleClick={(event) => handleClick(event, 4)} />
         : null }
-      <p className="paragraph">
-        { paragraph[4] }
-      </p>
-      { switchParagraph === 5
-        ? <Continuer handleClick={ (e) => handleClick(e, fifthParagraphe, 5) }/>
+      { next[4]
+        ? <Paragraph paragraph={ fifthParagraphe } handleClick={(event) => handleClick(event, 5)} />
         : null }
-      <p className="paragraph">
-        { paragraph[5] }
-      </p>
-      { switchParagraph === 6
-        ? <Continuer handleClick={ (e) => handleClick(e, sixthParagraphe, 6) }/>
+      { next[5]
+        ? <Paragraph paragraph={ sixthParagraphe } handleClick={(event) => handleClick(event, 6)} />
         : null }
-      <p className="paragraph">
-        { paragraph[6] }
-      </p>
-      { switchParagraph === 7
-        ? <h3>Bienvenue au labyrinthe des folies du Cybernaute!</h3>
-        : null }
-    </div>
-  );
+      { next[6]
+         ? (
+             <div>
+               <h3>Bienvenue au labyrinthe des folies du Cybernaute!</h3>
+               <button onClick={ onClick }>Continuer</button>
+             </div>
+         )
+         : null }
+     </div>
+  )
 };
 
 export default Bienvenue;

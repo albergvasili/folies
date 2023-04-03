@@ -7,9 +7,9 @@ function App() {
 
   switch (rendering) {
     case 'main':
-      return (<Main onClick={() => setRendering('intro')} />);
+      return (<Main onClick={ () => setRendering('intro') } />);
     case 'intro':
-      return (<Bienvenue />);
+      return (<Bienvenue onClick={ () => console.log('ooui')/*setRendering('next')*/ }/>);
     default:
   }
 };
