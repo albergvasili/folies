@@ -13,18 +13,19 @@ def add_spaces(source):
                            for character in line]
         index = 0
         paragraph = 2;
-        modules = {'one'};
+        modules = f'\n  one,\n  two,';
 
         for character in contents:
             # Create JS constants for each paragraph
             if index == 0:
                 contents[index] = f'const one = `\n  {character}'
             elif index + 1 == len(contents):
-                contents[index] = f'`;\nmodule.exports = {modules}'
+                contents[index] = f'`;\n\nmodule.exports = {{ {modules}\n}}'
             elif character == '\n':
-                contents[index] = f'`;\nconst { num2words(paragraph) } = `\n'
+                contents[index] = f'`;\nconst { num2words(paragraph) } = `\n  '
                 paragraph += 1
-                modules.add(num2words(paragraph))
+                # modules.add(num2words(paragraph))
+                modules = f'{modules}\n  {num2words(paragraph)},'
             # Add new line after characters in pauses
             elif character in pauses:
                 # Handle ellipsis (don't separate each dot)
@@ -33,16 +34,16 @@ def add_spaces(source):
                 # Add one space and a newline after a comma
                 elif character == ',':
                     contents[index] = f'{character} \n'
-                    # Eliminate extra space after ponctuation in pauses
+                    # Add extra space after ponctuation in pauses for indentation
                     if contents[index + 1] == ' ':
-                        contents.pop(index + 1)
+                        contents[index + 1] = '  '
                 # Add four spaces and a newline after punctuation in pauses
                 else:
                     character = f'{character}    \n'
                     contents[index] = character
-                    # Eliminate extra space after ponctuation in pauses
+                    # Add extra space after ponctuation in pauses for indentation
                     if contents[index + 1] == ' ':
-                        contents.pop(index + 1)
+                        contents[index + 1] = '  '
             index += 1
 
         result = ''.join(contents)
