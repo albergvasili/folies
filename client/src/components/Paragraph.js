@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
-function Paragraph({ paragraph, handleClick }) {
+function Paragraph({ paragraph, handleClick, form='', next='button' }) {
   const [typed, setTyped] = useState('');
+  const [value, setValue] = useState('');
 
   async function typing(textString) {
     function sleep(time){
@@ -23,13 +24,25 @@ function Paragraph({ paragraph, handleClick }) {
     typing(paragraph)
   }, []);
 
+  const textForm = (
+    <form className="text-form" onSubmit={ handleClick }>
+      <input type="text" value = { value } onChange={ (event) => setValue(event.target.value) }
+       placeholder={form.placeholder} />
+      <input type="submit" value="Continuer" />
+    </form>
+  );
+
   return (
     <div>
       <p>
         { typed }
       </p>
       { typed.length === paragraph.length
-        ? <button onClick={ handleClick }>Continuer</button>
+        ? next === 'button'
+          ? <button onClick={ handleClick }>Continuer</button>
+          : next === 'textForm'
+          ? textForm
+          : null
         : null }
     </div>
 )
