@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { firstParagraphe,
-  secondParagraphe,
-  thirdParagraphe,
-  fourthParagraphe,
-  fifthParagraphe,
-  sixthParagraphe } from '../text/bienvenue.js';
+import { zero,
+  one,
+  two,
+  three,
+  four,
+  five,
+  six } from '../text/bienvenue.js';
 import Paragraph from './Paragraph.js';
 
 function Bienvenue({ onClick }) {
@@ -17,26 +18,26 @@ function Bienvenue({ onClick }) {
 
   return (
     <div>
-      <Paragraph paragraph={ firstParagraphe } handleClick={(event) => handleClick(event, 1)} />
+      <Paragraph paragraph={ zero } handleClick={(event) => handleClick(event, 1)} />
       { next[1]
-        ? <Paragraph paragraph={ secondParagraphe } handleClick={(event) => handleClick(event, 2)} />
+        ? <Paragraph paragraph={ one } handleClick={(event) => handleClick(event, 2)} />
         : null }
       { next[2]
-        ? <Paragraph paragraph={ thirdParagraphe } handleClick={(event) => handleClick(event, 3)} />
+        ? <Paragraph paragraph={ two } handleClick={(event) => handleClick(event, 3)} />
         : null }
       { next[3]
-        ? <Paragraph paragraph={ fourthParagraphe } handleClick={(event) => handleClick(event, 4)} />
+        ? <Paragraph paragraph={ three } handleClick={(event) => handleClick(event, 4)} />
         : null }
       { next[4]
-        ? <Paragraph paragraph={ fifthParagraphe } handleClick={(event) => handleClick(event, 5)} />
+        ? <Paragraph paragraph={ four } handleClick={(event) => handleClick(event, 5)} />
         : null }
       { next[5]
-        ? <Paragraph paragraph={ sixthParagraphe } handleClick={(event) => handleClick(event, 6)} />
+        ? <Paragraph paragraph={ five } handleClick={(event) => handleClick(event, 6)} />
         : null }
       { next[6]
          ? (
              <div>
-               <h3>Bienvenue au labyrinthe des folies du Cybernaute!</h3>
+               <h2>{ six }</h2>
                <button onClick={ onClick }>Continuer</button>
              </div>
          )

@@ -12,20 +12,19 @@ def add_spaces(source):
                        for line in file
                            for character in line]
         index = 0
-        paragraph = 2;
-        modules = f'\n  one,\n  two,';
+        paragraph = 1;
+        modules = f'\n  zero,';
 
         for character in contents:
             # Create JS constants for each paragraph
             if index == 0:
-                contents[index] = f'const one = `\n  {character}'
+                contents[index] = f'const zero = `\n  {character}'
             elif index + 1 == len(contents):
                 contents[index] = f'`;\n\nmodule.exports = {{ {modules}\n}}'
             elif character == '\n':
                 contents[index] = f'`;\nconst { num2words(paragraph) } = `\n  '
-                paragraph += 1
-                # modules.add(num2words(paragraph))
                 modules = f'{modules}\n  {num2words(paragraph)},'
+                paragraph += 1
             # Add new line after characters in pauses
             elif character in pauses:
                 # Handle ellipsis (don't separate each dot)
