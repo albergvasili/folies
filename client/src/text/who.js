@@ -18,48 +18,50 @@ const two = `
   D'accord, 
   je vous écoute.    
   Quel est votre prénom ?    
-  Réponse.    
 `;
-const three = `
-  Réponse, 
-  tout simplement ?    
-  Faisons mieux.    
-  L'homme est quelque chose qui doit se surmonter.    
-  Remontez-vous, 
-  et dîtes-moi, 
-  Réponse, 
-  vous êtes qui ?    
-  Je veux dire, 
-  quel est votre titre de noblesse, 
-  le pseudo, 
-  l'attribut, 
-  l'adjectif qui vous qualifie, 
-  la définition qui se surajoute à votre identité.    
-  Soyez créatif !    
-  Réponse le/la Grand(e)?    
-  Trop commun.    
-  Réponse le/la Terrible?    
-  Quand-même.    
-  Réfléchissez !    
-  Réponse le/la Postmoderne, 
-  Juge, 
-  Carismatique...    
-`;
+function three(name) {
+  const text = `
+    ${name}, 
+    tout simplement ?    
+    Faisons mieux.    
+    L'homme est quelque chose qui doit se surmonter.    
+    Remontez-vous, 
+    et dîtes-moi, 
+    ${name}, 
+    vous êtes qui ?    
+    Je veux dire, 
+    quel est votre titre de noblesse, 
+    le pseudo, 
+    l'attribut, 
+    l'adjectif qui vous qualifie, 
+    la définition qui se surajoute à votre identité.    
+    Soyez créatif !    
+    ${name} le/la Grand(e)?    
+    Trop commun.    
+    ${name} le/la Terrible?    
+    Quand-même.    
+    Réfléchissez !    
+    ${name} le/la Postmoderne, 
+    Juge, 
+    Carismatique...    
+  `;
+  return text;
+};
 const four = `
   Allez-y:    
-  Réponse l'appropriée.    
 `;
-const five = `
-  Voilà Réponse l'appropriée!    
-  Mais...    
-  Réponse, 
-  est, 
-  me paraît-il votre prénom depuis votre naissance.    
-  N'est-ce pas ?    
-  Oui/Non.    
-`;
+function five(name, attribute) { 
+  const text = `
+    Voilà ${name} ${attribute}!    
+    Mais...    
+    ${name}, 
+    est, 
+    me paraît-il votre prénom depuis votre naissance.    
+    N'est-ce pas ?    
+  `;
+  return text;
+};
 const six = `
-  Oui:    
   Magnifique, 
   sauf que, 
   Le Cybernaute essaye ici de vous aider.    
@@ -80,20 +82,23 @@ const six = `
   Nous sommes tout cela et beaucoup plus.    
   Pourquoi mettre des barrières autour de ces êtres si vastes et volages ?    
 `;
-const seven = `
-  Reprenons:    
-  Libérez-vous de votre prénom.    
-  Inventez un prénom nouveau, 
-  avec une nouveau sens, 
-  et de nouveaux sons.    
-  Faîtes-le au moins pour vous amuser.    
-  Créez une identité nouvelle, 
-  Réponse l'appropriée, 
-  et prenez conscience des illusions de la vie, 
-  car il y en a beaucoup.    
-  Placez cette illusion de la parole devant vous, 
-  et démarrez l'introspection des additifs illusoires de la matière.    
-`;
+function seven(name, attribute) {
+  const text = `
+    Reprenons:    
+    Libérez-vous de votre prénom.    
+    Inventez un prénom nouveau, 
+    avec un nouveau sens, 
+    et de nouveaux sons.    
+    Faîtes-le au moins pour vous amuser.    
+    Créez une identité nouvelle, 
+    ${name} ${attribute},
+    et prenez conscience des illusions de la vie, 
+    car il y en a beaucoup.    
+    Placez cette illusion de la parole devant vous, 
+    et démarrez l'introspection des additifs illusoires de la matière.    
+  `;
+  return text;
+};
 const eight = `
   Qui êtes-vous?    
   Tout sauf Réponse.    
