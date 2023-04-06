@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 function Paragraph({ paragraph, handleClick, form='', next='button' }) {
   const [typed, setTyped] = useState('');
-  const [value, setValue] = useState('');
 
   async function typing(textString) {
     function sleep(time){
@@ -15,19 +14,19 @@ function Paragraph({ paragraph, handleClick, form='', next='button' }) {
 
     for (i = 0; i < decomposeMessage.length; i++) {
       recomposeMessage += decomposeMessage[i];
-      await sleep(1);
+      await sleep(50);
       setTyped(recomposeMessage);
     };
   };
 
   useEffect(() => {
     typing(paragraph)
-  }, []);
+  }, [paragraph]);
 
   const textForm = (
     <form className="text-form" onSubmit={ handleClick }>
-      <input type="text" value = { value } onChange={ (event) => setValue(event.target.value) }
-       placeholder={form.placeholder} />
+      <input type="text" value = { form.value } onChange={ form.change }
+       placeholder={form.placeholder} required />
       <input type="submit" value="Continuer" />
     </form>
   );
