@@ -101,7 +101,6 @@ function seven(name, attribute) {
 };
 const eight = `
   Qui êtes-vous?    
-  Tout sauf Réponse.    
 `;
 
 module.exports = { 
