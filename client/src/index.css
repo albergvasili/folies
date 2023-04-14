@@ -16,6 +16,35 @@ code {
     monospace;
 }
 
+img {
+  width: 200px;
+}
+
+svg {
+  border: solid red 2px;
+  width: 400px;
+  height: 400px;
+}
+
+button {
+  margin: 5px;
+  border: none;
+  padding: 3px;
+  background-color: #000;
+  color: #0D0;
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+footer {
+  position: relative;
+  bottom: -150px;
+}
+
 .hidden {
   display: none;
 }
