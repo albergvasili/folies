@@ -51,7 +51,7 @@ function Who({ onClick }) {
       : null } 
     { next[2]
       ? <Paragraph paragraph={ two } handleClick={ (event) => handleNext(event, 3) }
-        form={ firstNameForm } next='textForm' />
+         form={ firstNameForm } next='textForm' />
       : null
     }
     { next[3]
@@ -79,8 +79,19 @@ function Who({ onClick }) {
       : null
     }
     { next[8]
-      ? <Paragraph paragraph={ eight } handleClick={ onClick }
-        form={ newNameForm } next='textForm' />
+      ? <div>
+          <Paragraph paragraph={ eight } handleClick={ (event) => handleNext(event, 9) }
+           form={ newNameForm } next='textForm' />
+          <p>{identity.name} {identity.attribute}, également connu sous le nom de {identity.newName}</p>
+        </div>
+      : null
+    }
+    { next[9]
+      ?  <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/hSAmcedkOXo?controls=0&autoplay=1"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       : null
     }
   </div>
