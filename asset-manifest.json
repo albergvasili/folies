@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/folies/static/css/main.6f3dfc36.css",
+    "main.js": "/folies/static/js/main.efd20e60.js",
+    "index.html": "/folies/index.html",
+    "main.6f3dfc36.css.map": "/folies/static/css/main.6f3dfc36.css.map",
+    "main.efd20e60.js.map": "/folies/static/js/main.efd20e60.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f3dfc36.css",
+    "static/js/main.efd20e60.js"
+  ]
+}
