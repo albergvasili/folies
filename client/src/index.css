@@ -5,10 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
 
   background-color: #000;
   color: #0D0;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 code {
@@ -24,6 +28,13 @@ svg {
   border: solid red 2px;
   width: 400px;
   height: 400px;
+}
+
+p {
+  margin: 15px;
+  padding: 5px;
+  max-width: 700px;
+  text-align: left;
 }
 
 button {
